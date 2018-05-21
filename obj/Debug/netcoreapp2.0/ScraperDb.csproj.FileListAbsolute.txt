@@ -1,0 +1,11 @@
+/Users/jmcgee/Documents/ScraperDb/bin/Debug/netcoreapp2.0/ScraperDb.deps.json
+/Users/jmcgee/Documents/ScraperDb/bin/Debug/netcoreapp2.0/ScraperDb.runtimeconfig.json
+/Users/jmcgee/Documents/ScraperDb/bin/Debug/netcoreapp2.0/ScraperDb.runtimeconfig.dev.json
+/Users/jmcgee/Documents/ScraperDb/bin/Debug/netcoreapp2.0/ScraperDb.dll
+/Users/jmcgee/Documents/ScraperDb/bin/Debug/netcoreapp2.0/ScraperDb.pdb
+/Users/jmcgee/Documents/ScraperDb/obj/Debug/netcoreapp2.0/ScraperDb.csprojResolveAssemblyReference.cache
+/Users/jmcgee/Documents/ScraperDb/obj/Debug/netcoreapp2.0/ScraperDb.csproj.CoreCompileInputs.cache
+/Users/jmcgee/Documents/ScraperDb/obj/Debug/netcoreapp2.0/ScraperDb.AssemblyInfoInputs.cache
+/Users/jmcgee/Documents/ScraperDb/obj/Debug/netcoreapp2.0/ScraperDb.AssemblyInfo.cs
+/Users/jmcgee/Documents/ScraperDb/obj/Debug/netcoreapp2.0/ScraperDb.dll
+/Users/jmcgee/Documents/ScraperDb/obj/Debug/netcoreapp2.0/ScraperDb.pdb
