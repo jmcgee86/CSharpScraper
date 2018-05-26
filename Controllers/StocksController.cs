@@ -6,12 +6,22 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ScraperDb.Models;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
+using System.Text; 
+using System.Drawing;
+using ScraperDb.Controllers;
+using System.Globalization;
 
 namespace ScraperDb.Controllers
 {
     public class StocksController : Controller
     {
         private readonly FinanceDbContext _context;
+        //private readonly PortfolioInfo _snapshot;
 
         public StocksController(FinanceDbContext context)
         {
@@ -51,18 +61,33 @@ namespace ScraperDb.Controllers
         // POST: Stocks/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+
+
+     
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,DatePulled,NetWorth,DayGain,DayGainPercentage,TotalGain,TotalGainPercentage")] PortfolioInfo portfolioInfo)
+        public async Task<IActionResult> Create(PortfolioInfo info)
         {
+            var snapshot = GetData.Retrieve();
+            //snapshot = info;
             if (ModelState.IsValid)
             {
-                _context.Add(portfolioInfo);
+                _context.Add(snapshot);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
             }
-            return View(portfolioInfo);
+            return View(info);
         }
+        // public async Task<IActionResult> Create([Bind("ID,DatePulled,NetWorth,DayGain,DayGainPercentage,TotalGain,TotalGainPercentage")] PortfolioInfo portfolioInfo)
+        // {
+        //     if (ModelState.IsValid)
+        //     {
+        //         _context.Add(portfolioInfo);
+        //         await _context.SaveChangesAsync();
+        //         return RedirectToAction(nameof(Index));
+        //     }
+        //     return View(portfolioInfo);
+        // }
 
         // GET: Stocks/Edit/5
         public async Task<IActionResult> Edit(int? id)

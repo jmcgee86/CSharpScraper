@@ -17,6 +17,8 @@ namespace ScraperDb
 {
     public class Startup
     {
+
+        public IServiceCollection db {get; set;}
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,8 +31,10 @@ namespace ScraperDb
         {
             services.AddMvc();
 
-            services.AddDbContext<FinanceDbContext>(options =>
+           services.AddDbContext<FinanceDbContext>(options =>
                 options.UseSqlite("Data Source=Finance.db"));
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

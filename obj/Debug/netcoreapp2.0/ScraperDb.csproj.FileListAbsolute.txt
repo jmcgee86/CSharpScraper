@@ -9,3 +9,4 @@
 /Users/jmcgee/Documents/ScraperDb/obj/Debug/netcoreapp2.0/ScraperDb.AssemblyInfo.cs
 /Users/jmcgee/Documents/ScraperDb/obj/Debug/netcoreapp2.0/ScraperDb.dll
 /Users/jmcgee/Documents/ScraperDb/obj/Debug/netcoreapp2.0/ScraperDb.pdb
+/Users/jmcgee/Documents/ScraperDb/bin/Debug/netcoreapp2.0/chromedriver
