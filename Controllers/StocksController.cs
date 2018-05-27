@@ -29,40 +29,191 @@ namespace ScraperDb.Controllers
         }
 
         // GET: Stocks
-        public async Task<IActionResult> Index()
+        // public async Task<IActionResult> Index()
+        // {
+        //     return View(await _context.Portfolio.ToListAsync());
+        // }
+
+        public async Task<IActionResult> Index(string sortOrder)
         {
-            return View(await _context.Portfolio.ToListAsync());
+                ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+                ViewData["NetworthParm"] = sortOrder == "networth_desc" ? "Networth" : "networth_desc";
+                ViewData["DaygainParm"] = sortOrder == "daygain_desc" ? "Daygain" : "daygain_desc";
+                ViewData["DaygainPercentageParm"] = sortOrder == "daygainpercentage_desc" ? "DaygainPercentage" : "daygainpercentage_desc";
+                ViewData["TotalgainParm"] = sortOrder == "totalgain_desc" ? "Totalgain" : "totalgain_desc";
+                ViewData["TotalgainPercentageParm"] = sortOrder == "totalgainpercentage_desc" ? "TotalgainPercentage" : "totalgainpercentage_desc";
+
+                var portfolioSnapshots = from s in _context.Portfolio
+                                            select s;
+                switch (sortOrder)
+                {
+                    case "Date":
+                        portfolioSnapshots = portfolioSnapshots.OrderBy(s => s.DatePulled);
+                        break;
+                    case "date_desc":
+                        portfolioSnapshots = portfolioSnapshots.OrderByDescending(s => s.DatePulled);
+                        break;
+                    case "Networth":
+                        portfolioSnapshots = portfolioSnapshots.OrderBy(s => s.NetWorth);
+                        break;
+                    case "networth_desc":
+                        portfolioSnapshots = portfolioSnapshots.OrderByDescending(s => s.NetWorth);
+                        break;
+                    case "Daygain":
+                        portfolioSnapshots = portfolioSnapshots.OrderBy(s => s.DayGain);
+                        break;
+                    case "daygain_desc":
+                        portfolioSnapshots = portfolioSnapshots.OrderByDescending(s => s.DayGain);
+                        break;
+                    case "DaygainPercentage":
+                        portfolioSnapshots = portfolioSnapshots.OrderBy(s => s.DayGainPercentage);
+                        break;
+                    case "daygainpercentage_desc":
+                        portfolioSnapshots = portfolioSnapshots.OrderByDescending(s => s.DayGainPercentage);
+                        break;
+                    case "TotalGain":
+                        portfolioSnapshots = portfolioSnapshots.OrderBy(s => s.TotalGain);
+                        break;
+                    case "totalgain_desc":
+                        portfolioSnapshots = portfolioSnapshots.OrderByDescending(s => s.TotalGain);
+                        break;
+                     case "TotalGainPercentage":
+                        portfolioSnapshots = portfolioSnapshots.OrderBy(s => s.TotalGainPercentage);
+                        break;
+                    case "totalgainpercentage_desc":
+                        portfolioSnapshots = portfolioSnapshots.OrderByDescending(s => s.TotalGainPercentage);
+                        break;
+                    default:
+                        portfolioSnapshots = portfolioSnapshots.OrderByDescending(s => s.DatePulled);
+                        break;
+                }
+                return View(await portfolioSnapshots.AsNoTracking().ToListAsync());
         }
 
         // GET: Stocks/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, string sortOrder)
         {
             if (id == null)
             {
                 return NotFound();
             }
+            
+            ViewData["SymbolParm"] = sortOrder = String.IsNullOrEmpty(sortOrder) ? "Name" : "";
+            ViewData["CurrentPriceParm"] = sortOrder == "currentprice_desc" ? "CurrentPrice" : "currentprice_desc";
+            ViewData["PriceChangeParm"] = sortOrder == "pricechange_desc" ? "PriceChange" : "pricechange_desc";
+            ViewData["PriceChangePercentageParm"] = sortOrder == "pricechangepercentage_desc" ? "PriceChangePercentage" : "pricechangepercentage_desc";
+            ViewData["SharesParm"] = sortOrder == "shares_desc" ? "Shares" : "shares_desc";
+            ViewData["CostBasisParm"] = sortOrder == "costbasis_desc" ? "CostBasis" : "costbasis_desc";
+            ViewData["MarketValueParm"] = sortOrder == "marketvalue_desc" ? "MarketValue" : "marketvalue_desc";
+            ViewData["DayGainParm"] = sortOrder == "daygain_desc" ? "DayGain" : "daygain_desc";
+            ViewData["DayGainPercentageParm"] = sortOrder == "daygainpercentage_desc" ? "DayGainPercentage" : "daygainpercentage_desc";
+            ViewData["TotalGainParm"] = sortOrder == "totalgain_desc" ? "TotalGain" : "totalgain_desc";
+            ViewData["TotalPercentageParm"] = sortOrder == "totalgainpercentage_desc" ? "TotalGainPercentage" : "totalgainpercentage_desc";
+            ViewData["LotsParm"] = sortOrder == "lots_desc" ? "Lots" : "lots_desc";
+            ViewData["NotesParm"] = sortOrder == "notes_desc" ? "Notes" : "notes_desc";
+
+
 
             var portfolioInfo = await _context.Portfolio
-                .SingleOrDefaultAsync(m => m.ID == id);
-            //var StockInfoModel = new StockInfo();
-            //var stocks = await _context.Stocks.SingleOrDefaultAsync(m=> m.ID == id);
-            var stocks = _context.Stocks.Where(m=>m.PortfolioInfo.ID==id); 
-            portfolioInfo.StockInfo = await stocks.ToListAsync();
-
-
+                .SingleOrDefaultAsync(m => m.ID == id); 
+            var stocks = from s in _context.Stocks.Where(m=>m.PortfolioInfo.ID==id)
+                                            select s;
             if (portfolioInfo == null)
             {
                 return NotFound();
             }
 
+        switch (sortOrder)
+    {
+        case "Name":
+            stocks = stocks.OrderBy(s => s.StockSymbol);
+            break;
+        case "CurrentPrice":
+            stocks = stocks.OrderBy(s => s.CurrentPrice);
+            break;
+        case "currentprice_desc":
+            stocks = stocks.OrderByDescending(s => s.CurrentPrice);
+            break;
+        case "PriceChange":
+            stocks = stocks.OrderBy(s => s.PriceChange);
+            break;
+        case "pricechange_desc":
+            stocks = stocks.OrderByDescending(s => s.PriceChange);
+            break;
+        case "PriceChangePercentage":
+            stocks = stocks.OrderBy(s => s.PriceChangePercentage);
+            break;
+        case "pricechangepercentage_desc":
+            stocks = stocks.OrderByDescending(s => s.PriceChangePercentage);
+            break;
+        case "Shares":
+            stocks = stocks.OrderBy(s => s.Shares);
+            break;
+        case "shares_desc":
+            stocks = stocks.OrderByDescending(s => s.Shares);
+            break;
+        case "CostBasis":
+            stocks = stocks.OrderBy(s => s.CostBasis);
+            break;
+        case "costbasis_desc":
+            stocks = stocks.OrderByDescending(s => s.CostBasis);
+            break;
+        case "MarketValue":
+            stocks = stocks.OrderBy(s => s.MarketValue);
+            break;
+        case "marketvalue_desc":
+            stocks = stocks.OrderByDescending(s => s.MarketValue);
+            break;
+        case "DayGain":
+            stocks = stocks.OrderBy(s => s.DayGain);
+            break;
+        case "daygain_desc":
+            stocks = stocks.OrderByDescending(s => s.DayGain);
+            break;
+        case "DayGainPercentage":
+            stocks = stocks.OrderBy(s => s.DayGainPercentage);
+            break;
+        case "daygainpercentage_desc":
+            stocks = stocks.OrderByDescending(s => s.DayGainPercentage);
+            break;
+       case "TotalGain":
+            stocks = stocks.OrderBy(s => s.TotalGain);
+            break;
+        case "totalgain_desc":
+            stocks = stocks.OrderByDescending(s => s.TotalGain);
+            break;
+        case "TotalGainPercentage":
+            stocks = stocks.OrderBy(s => s.TotalGainPercentage);
+            break;
+        case "totalgainpercentage_desc":
+            stocks = stocks.OrderByDescending(s => s.TotalGainPercentage);
+            break;
+       case "Lots":
+            stocks = stocks.OrderBy(s => s.Lots);
+            break;
+        case "lots_desc":
+            stocks = stocks.OrderByDescending(s => s.Lots);
+            break;
+       case "Notes":
+            stocks = stocks.OrderBy(s => s.Notes);
+            break;
+        case "notes_desc":
+            stocks = stocks.OrderByDescending(s => s.Notes);
+            break;
+        default:
+            stocks = stocks.OrderByDescending(s => s.StockSymbol);
+            break;
+    }
+    portfolioInfo.StockInfo = await stocks.AsNoTracking().ToListAsync();
+
             return View(portfolioInfo);
         }
 
         // GET: Stocks/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+        // public IActionResult Create()
+        // {
+        //     return View();
+        // }
 
         // POST: Stocks/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -76,24 +227,13 @@ namespace ScraperDb.Controllers
         public async Task<IActionResult> Create(PortfolioInfo info)
         {
             var snapshot = GetData.Retrieve();
-            //snapshot = info;
             if (ModelState.IsValid)
             {
                 _context.Add(snapshot);
                 await _context.SaveChangesAsync();
             }
-            return View(info);
+            return Redirect("/stocks/Details/" + snapshot.ID);
         }
-        // public async Task<IActionResult> Create([Bind("ID,DatePulled,NetWorth,DayGain,DayGainPercentage,TotalGain,TotalGainPercentage")] PortfolioInfo portfolioInfo)
-        // {
-        //     if (ModelState.IsValid)
-        //     {
-        //         _context.Add(portfolioInfo);
-        //         await _context.SaveChangesAsync();
-        //         return RedirectToAction(nameof(Index));
-        //     }
-        //     return View(portfolioInfo);
-        // }
 
         // GET: Stocks/Edit/5
         public async Task<IActionResult> Edit(int? id)
