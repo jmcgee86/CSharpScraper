@@ -49,6 +49,97 @@
     </dl>
 </div>
 <div>
+    <table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].StockSymbol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].CurrentPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].PriceChange)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].PriceChangePercentage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].Shares)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].CostBasis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].MarketValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].DayGain)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].DayGainPercentage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].TotalGain)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].TotalGainPercentage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].Lots)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StockInfo[0].Notes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.StockInfo) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StockSymbol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceChange)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceChangePercentage)
+            </td>
+            <td> 
+                @Html.DisplayFor(modelItem => item.Shares)
+            </td>
+            <td> 
+                @Html.DisplayFor(modelItem => item.CostBasis)
+            </td>
+            <td> 
+                @Html.DisplayFor(modelItem => item.MarketValue)
+            </td>
+            <td> 
+                @Html.DisplayFor(modelItem => item.DayGain)
+            </td>
+            <td> 
+                @Html.DisplayFor(modelItem => item.DayGainPercentage)
+            </td>
+            <td> 
+                @Html.DisplayFor(modelItem => item.TotalGain)
+            </td>
+            <td> 
+                @Html.DisplayFor(modelItem => item.TotalGainPercentage)
+            </td>
+            <td> 
+                @Html.DisplayFor(modelItem => item.Lots)
+            </td>
+            <td> 
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+        </tr>
+        }
+</div>
+<div>
     <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

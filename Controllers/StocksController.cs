@@ -44,6 +44,12 @@ namespace ScraperDb.Controllers
 
             var portfolioInfo = await _context.Portfolio
                 .SingleOrDefaultAsync(m => m.ID == id);
+            //var StockInfoModel = new StockInfo();
+            //var stocks = await _context.Stocks.SingleOrDefaultAsync(m=> m.ID == id);
+            var stocks = _context.Stocks.Where(m=>m.PortfolioInfo.ID==id); 
+            portfolioInfo.StockInfo = await stocks.ToListAsync();
+
+
             if (portfolioInfo == null)
             {
                 return NotFound();
@@ -102,6 +108,7 @@ namespace ScraperDb.Controllers
             {
                 return NotFound();
             }
+        //var stocks = _context.
             return View(portfolioInfo);
         }
 
