@@ -1,27 +1,14 @@
 @model IEnumerable<ScraperDb.Models.PortfolioInfo>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Stock Portfolio Snapshots";
 }
 
-<h2>Index</h2>
+<h2>Stock Portfolio Snapshots</h2>
      <form asp-action="Create">
 
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" style="color: white" value="Retrieve New Portfolio Snapshot" class="btn btn-primary"/>
     </form>
-
-    <!-- <a asp-action="Create">Create New Snapshot</a> -->
-    <!-- <button type = "button" class = "btn btn-primary"><a style = "color: white" asp-action="Create">TakeSnapshot</a></button> -->
-<!-- <input type="button" value="Some text" onclick="@("window.location.href='" + @Url.Action("Create", "StocksController") + "'");" /> -->
-    <!-- @using (Html.BeginForm("Create", "StocksController", FormMethod.Post)) 
-{
-    @Html.AntiForgeryToken()
-    <div class = "form">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <input type="submit" value="Create New Snapshot" class="btn btn-default" />
-
-    </div>
-} -->
 
 <table class="table">
     <thead>

@@ -15,9 +15,16 @@ using System.Text;
 using System.Drawing;
 using ScraperDb.Controllers;
 using System.Globalization;
+using ScraperDb.Models.Auth;
+using ScraperDb.Models.AccountViewModels;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace ScraperDb.Controllers
 {
+    [Authorize]
     public class StocksController : Controller
     {
         private readonly FinanceDbContext _context;
@@ -111,8 +118,6 @@ namespace ScraperDb.Controllers
             ViewData["TotalPercentageParm"] = sortOrder == "totalgainpercentage_desc" ? "TotalGainPercentage" : "totalgainpercentage_desc";
             ViewData["LotsParm"] = sortOrder == "lots_desc" ? "Lots" : "lots_desc";
             ViewData["NotesParm"] = sortOrder == "notes_desc" ? "Notes" : "notes_desc";
-
-
 
             var portfolioInfo = await _context.Portfolio
                 .SingleOrDefaultAsync(m => m.ID == id); 
@@ -209,19 +214,10 @@ namespace ScraperDb.Controllers
             return View(portfolioInfo);
         }
 
-        // GET: Stocks/Create
-        // public IActionResult Create()
-        // {
-        //     return View();
-        // }
-
         // POST: Stocks/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 
-
-
-     
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(PortfolioInfo info)
@@ -248,73 +244,72 @@ namespace ScraperDb.Controllers
             {
                 return NotFound();
             }
-        //var stocks = _context.
             return View(portfolioInfo);
         }
 
         // POST: Stocks/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,DatePulled,NetWorth,DayGain,DayGainPercentage,TotalGain,TotalGainPercentage")] PortfolioInfo portfolioInfo)
-        {
-            if (id != portfolioInfo.ID)
-            {
-                return NotFound();
-            }
+        // [HttpPost]
+        // [ValidateAntiForgeryToken]
+        // public async Task<IActionResult> Edit(int id, [Bind("ID,DatePulled,NetWorth,DayGain,DayGainPercentage,TotalGain,TotalGainPercentage")] PortfolioInfo portfolioInfo)
+        // {
+        //     if (id != portfolioInfo.ID)
+        //     {
+        //         return NotFound();
+        //     }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(portfolioInfo);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PortfolioInfoExists(portfolioInfo.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(portfolioInfo);
-        }
+        //     if (ModelState.IsValid)
+        //     {
+        //         try
+        //         {
+        //             _context.Update(portfolioInfo);
+        //             await _context.SaveChangesAsync();
+        //         }
+        //         catch (DbUpdateConcurrencyException)
+        //         {
+        //             if (!PortfolioInfoExists(portfolioInfo.ID))
+        //             {
+        //                 return NotFound();
+        //             }
+        //             else
+        //             {
+        //                 throw;
+        //             }
+        //         }
+        //         return RedirectToAction(nameof(Index));
+        //     }
+        //     return View(portfolioInfo);
+        // }
 
-        // GET: Stocks/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        // // GET: Stocks/Delete/5
+        // public async Task<IActionResult> Delete(int? id)
+        // {
+        //     if (id == null)
+        //     {
+        //         return NotFound();
+        //     }
 
-            var portfolioInfo = await _context.Portfolio
-                .SingleOrDefaultAsync(m => m.ID == id);
-            if (portfolioInfo == null)
-            {
-                return NotFound();
-            }
+        //     var portfolioInfo = await _context.Portfolio
+        //         .SingleOrDefaultAsync(m => m.ID == id);
+        //     if (portfolioInfo == null)
+        //     {
+        //         return NotFound();
+        //     }
 
-            return View(portfolioInfo);
-        }
+        //     return View(portfolioInfo);
+        // }
 
-        // POST: Stocks/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var portfolioInfo = await _context.Portfolio.SingleOrDefaultAsync(m => m.ID == id);
-            _context.Portfolio.Remove(portfolioInfo);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+        // // POST: Stocks/Delete/5
+        // [HttpPost, ActionName("Delete")]
+        // [ValidateAntiForgeryToken]
+        // public async Task<IActionResult> DeleteConfirmed(int id)
+        // {
+        //     var portfolioInfo = await _context.Portfolio.SingleOrDefaultAsync(m => m.ID == id);
+        //     _context.Portfolio.Remove(portfolioInfo);
+        //     await _context.SaveChangesAsync();
+        //     return RedirectToAction(nameof(Index));
+        // }
 
         private bool PortfolioInfoExists(int id)
         {

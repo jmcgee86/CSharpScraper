@@ -25,7 +25,10 @@
                 <input asp-for="ConfirmPassword" class="form-control" />
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn btn-default" style="float:right;">Register</button>
+            <button type="submit" class="btn btn-primary" style="float:right; color:white">Register</button>
         </form>
     </div>
+</div>
+<div>
+    <a asp-area="" asp-controller="Account" asp-action="Login">Already have an account? Please log-in.</a>
 </div>
