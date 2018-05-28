@@ -12,6 +12,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using ScraperDb.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
+using ScraperDb.Models.Auth;
 
 namespace ScraperDb
 {
@@ -29,12 +32,15 @@ namespace ScraperDb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
 
            services.AddDbContext<FinanceDbContext>(options =>
                 options.UseSqlite("Data Source=Finance.db"));
+            
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<FinanceDbContext>()
+                .AddDefaultTokenProviders();
 
-
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,12 +50,14 @@ namespace ScraperDb
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
+            // else
+            // {
+            //     app.UseExceptionHandler("/Home/Error");
+            // }
 
             app.UseStaticFiles();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

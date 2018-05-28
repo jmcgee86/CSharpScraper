@@ -25,7 +25,9 @@
         "dependencies": {
           "DotNetSeleniumExtras.WaitHelpers": "3.11.0",
           "Microsoft.AspNetCore.All": "2.0.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.1.0-rc1-final",
           "Microsoft.AspNetCore.HttpsPolicy": "2.1.0-rc1-final",
+          "Microsoft.AspNetCore.Identity": "2.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.0.0",
           "Microsoft.EntityFrameworkCore": "2.0.0",
           "Microsoft.EntityFrameworkCore.Design": "2.0.0",
