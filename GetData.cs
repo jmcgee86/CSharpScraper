@@ -28,7 +28,7 @@ namespace ScraperDb
 
             ChromeOptions options = new ChromeOptions();
             options.AddArguments("--incognito");
-           // options.AddArguments("--headless");
+            //options.AddArguments("--headless");
 
             using (var driver = new ChromeDriver("bin/Debug/netcoreapp2.0/", options))
             {

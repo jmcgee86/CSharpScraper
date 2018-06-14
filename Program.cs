@@ -27,7 +27,6 @@ namespace ScraperDb
     {
         public static void Main(string[] args)
         {
-            // BuildWebHost(args).Run();
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
@@ -38,13 +37,7 @@ namespace ScraperDb
                 host.Run();
 		    
         }
-	
-// public static IWebHost BuildWebHost(string[] args) =>
-//             WebHost.CreateDefaultBuilder(args)
-//                 .UseKestrel();
-//                 .UseContentRoot(Directory.GetCurrentDirectory())
-//                 .UseStartup<Startup>()
-//                 .Build();
+
 
 
     }

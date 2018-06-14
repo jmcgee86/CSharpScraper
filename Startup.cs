@@ -50,10 +50,6 @@ namespace ScraperDb
             {
                 app.UseDeveloperExceptionPage();
             }
-            // else
-            // {
-            //     app.UseExceptionHandler("/Home/Error");
-            // }
 
             app.UseStaticFiles();
 

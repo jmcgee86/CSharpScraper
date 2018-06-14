@@ -10,3 +10,15 @@
 /Users/jmcgee/Documents/ScraperDb/obj/Debug/netcoreapp2.0/ScraperDb.pdb
 /Users/jmcgee/Documents/ScraperDb/bin/Debug/netcoreapp2.0/chromedriver
 /Users/jmcgee/Documents/ScraperDb/obj/Debug/netcoreapp2.0/ScraperDb.csprojAssemblyReference.cache
+/Users/jmcgee/Documents/working_scraper_local/CSharpScraperWithDB_Test/obj/Debug/netcoreapp2.0/ScraperDb.csprojAssemblyReference.cache
+/Users/jmcgee/Documents/working_scraper_local/CSharpScraperWithDB_Test/obj/Debug/netcoreapp2.0/ScraperDb.csproj.CoreCompileInputs.cache
+/Users/jmcgee/Documents/working_scraper_local/CSharpScraperWithDB_Test/obj/Debug/netcoreapp2.0/ScraperDb.AssemblyInfoInputs.cache
+/Users/jmcgee/Documents/working_scraper_local/CSharpScraperWithDB_Test/obj/Debug/netcoreapp2.0/ScraperDb.AssemblyInfo.cs
+/Users/jmcgee/Documents/working_scraper_local/CSharpScraperWithDB_Test/obj/Debug/netcoreapp2.0/ScraperDb.dll
+/Users/jmcgee/Documents/working_scraper_local/CSharpScraperWithDB_Test/obj/Debug/netcoreapp2.0/ScraperDb.pdb
+/Users/jmcgee/Documents/working_scraper_local/CSharpScraperWithDB_Test/bin/Debug/netcoreapp2.0/chromedriver
+/Users/jmcgee/Documents/working_scraper_local/CSharpScraperWithDB_Test/bin/Debug/netcoreapp2.0/ScraperDb.deps.json
+/Users/jmcgee/Documents/working_scraper_local/CSharpScraperWithDB_Test/bin/Debug/netcoreapp2.0/ScraperDb.runtimeconfig.json
+/Users/jmcgee/Documents/working_scraper_local/CSharpScraperWithDB_Test/bin/Debug/netcoreapp2.0/ScraperDb.runtimeconfig.dev.json
+/Users/jmcgee/Documents/working_scraper_local/CSharpScraperWithDB_Test/bin/Debug/netcoreapp2.0/ScraperDb.dll
+/Users/jmcgee/Documents/working_scraper_local/CSharpScraperWithDB_Test/bin/Debug/netcoreapp2.0/ScraperDb.pdb

@@ -14277,11 +14277,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/jmcgee/Documents/ScraperDb/ScraperDb.csproj",
+      "projectUniqueName": "/Users/jmcgee/Documents/working_scraper_local/CSharpScraperWithDB_Test/ScraperDb.csproj",
       "projectName": "ScraperDb",
-      "projectPath": "/Users/jmcgee/Documents/ScraperDb/ScraperDb.csproj",
+      "projectPath": "/Users/jmcgee/Documents/working_scraper_local/CSharpScraperWithDB_Test/ScraperDb.csproj",
       "packagesPath": "/Users/jmcgee/.nuget/packages/",
-      "outputPath": "/Users/jmcgee/Documents/ScraperDb/obj/",
+      "outputPath": "/Users/jmcgee/Documents/working_scraper_local/CSharpScraperWithDB_Test/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
