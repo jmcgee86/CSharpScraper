@@ -21,7 +21,6 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 
-
 namespace ScraperDb.Controllers
 {
     [Authorize]
