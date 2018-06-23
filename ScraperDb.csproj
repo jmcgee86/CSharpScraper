@@ -26,13 +26,14 @@
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.0-rc1-final"/>
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.0.1"/>
     <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="2.0.1"/>
+    <PackageReference Include="Selenium.Firefox.WebDriver" Version="0.21.0"/>
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0"/>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.3"/>
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0"/>
   </ItemGroup>
-      <ItemGroup>
-        <None Include="web.config" CopyToPublishDirectory="Always" />
-    </ItemGroup>
+  <ItemGroup>
+    <None Include="web.config" CopyToPublishDirectory="Always"/>
+  </ItemGroup>
 </Project>
