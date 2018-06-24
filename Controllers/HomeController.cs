@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ScraperDb.Models;
+using System.Threading;
 
 namespace ScraperDb.Controllers
 {
@@ -12,14 +13,16 @@ namespace ScraperDb.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var model = GetTicker.RetrieveTickerData();
+            return View(model);
         }
 
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
-
-            return View();
+            // TickerInfo tickerInfo = new TickerInfo();
+            var ticker = GetTicker.RetrieveTickerData();
+            return View(ticker);
         }
 
         public IActionResult Contact()

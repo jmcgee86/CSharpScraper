@@ -9,7 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using ScraperDb.Models;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System.Text; 
 using System.Drawing;
@@ -22,7 +21,6 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support;
 using OpenQA.Selenium.Firefox;
 
-
 namespace ScraperDb
 {
     public class GetData
@@ -32,26 +30,15 @@ namespace ScraperDb
         {
            var snapshot = new PortfolioInfo();
 
-            // ChromeOptions options = new ChromeOptions();
-            // options.AddArguments("--incognito");
-            // options.AddArguments("--headless");
-
-            FirefoxDriverService service = FirefoxDriverService.CreateDefaultService("bin/Debug/netcoreapp2.0/");
-
-           // using (var driver = new ChromeDriver("bin/Debug/netcoreapp2.0/", options))
-           using (var driver = new FirefoxDriver(service))
+            FirefoxOptions options = new FirefoxOptions();
+            options.AddArguments("--headless");
+           
+           using (var driver = new FirefoxDriver("bin/Debug/netcoreapp2.0/", options))
             {
                 var keys = new Keys();
                 var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-                // driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(10);
 
-
-                // driver.Navigate().GoToUrl("https://login.yahoo.com/config/login?.intl=us&.lang=en-US&.src=finance&.done=https%3A%2F%2Ffinance.yahoo.com%2F");
                 driver.Navigate().GoToUrl("https://login.yahoo.com/?.src=finance&.intl=us&.done=https%3A%2F%2Ffinance.yahoo.com%2Fportfolios&add=1");
-                // driver.Navigate().GoToUrl("https://finance.yahoo.com/portfolio/p_0/view/v2");
-                // wait.Until(d => d.FindElement(By.ClassName("_299Wd")));
-                // var signinButton = driver.FindElementByClassName("_299Wd");
-                // signinButton.Click();
                 
                 var userNameField = driver.FindElementById("login-username");
                 var userName = keys.Email;
@@ -68,73 +55,6 @@ namespace ScraperDb
 
                 var loginButton = driver.FindElementById("login-signin");
                 loginButton.Click();
-
-                // var portfolioBtn = driver.FindElementByXPath("//*[@id=\"Nav-0-DesktopNav\"]/div/div[3]/div/div[1]/ul/li[2]/a");
-                // portfolioBtn.Click();
-                // wait.Until(d => d.FindElement(By.CssSelector("body")));
-                // Console.WriteLine("found body");
-                // driver.FindElement(By.CssSelector("body")).SendKeys("Keys.ESCAPE");
-                // wait.Until(d => d.FindElement(By.Id("atomic")));
-                // Console.WriteLine("found");
-                // driver.FindElement(By.Id("atomic")).SendKeys("Keys.Escape");
-
-
-                // driver.ExecuteScript("window.stop()");
-                // ((IJavaScriptExecutor)driver).ExecuteScript("return window.stop();");
-                // wait.Until(d => d.FindElement(By.Id("atomic")));
-                // driver.ExecuteAsyncScript("window.stop()");    
-
-                // driver.FindElement(By.CssSelector("body")).SendKeys(OpenQA.Selenium.Keys.Control + "t");
-                // driver.SwitchTo().Window(driver.WindowHandles.Last());
-                // driver.Navigate().GoToUrl("https://finance.yahoo.com/portfolio/p_0/view/v2");
-
-                // try{
-                //     driver.Navigate().GoToUrl("https://finance.yahoo.com/portfolio/p_0/view/v2");
-                // }
-                // catch(WebDriverException){
-                //     Console.WriteLine("timeout");
-                //     driver.ExecuteScript("window.stop();");
-                //     // driver.Navigate().GoToUrl("https://finance.yahoo.com/portfolio/p_0/view/v2");
-                // }
-                // catch(TimeoutException){
-                //     Console.WriteLine("timeout2");
-                //     driver.ExecuteScript("window.stop();");
-                // }
-                // finally{
-                //     driver.Navigate().GoToUrl("https://finance.yahoo.com/portfolio/p_0/view/v2");
-                // }
-   
-
-
-                // try{
-                //     driver.Navigate().GoToUrl("https://finance.yahoo.com/portfolio/p_0/view/v2");
-                // }
-                // catch(TimeoutException){
-                //     // Console.WriteLine(e);
-                //     driver.Navigate().GoToUrl("https://finance.yahoo.com/portfolio/p_0/view/v2");
-                // }
-                // finally{
-                //     driver.Navigate().GoToUrl("https://finance.yahoo.com/portfolio/p_0/view/v2");
-                // }
-
-
-                // wait.Until(d => d.FindElement(By.Id("app")));
-                // var element = driver.FindElementById("app");
-                // element.SendKeys(OpenQA.Selenium.Keys.Escape);
-                // Actions action = new Actions(driver);
-                // action.SendKeys(OpenQA.Selenium.Keys.Escape);
-//*[@id="yui_3_18_0_3_1529766166518_1004"]
-                // wait.Until(d =>d.FindElement(By.XPath("//*[@id=\"yui_3_18_0_3_1529766166518_1004\"]")));
-                //var financeBtn = driver.FindElementByXPath("//*[@id=\"yui_3_18_0_3_1529766166518_1004\"]");
-                //financeBtn.Click();
-
-                // Thread.Sleep(5000);
-                // Console.WriteLine("sending esc");
-
-                // driver.Keyboard.SendKeys(OpenQA.Selenium.Keys.Escape);
-                // Console.WriteLine("escape key sent");
-
-                // Thread.Sleep(5000);
 
                 driver.Navigate().GoToUrl("https://finance.yahoo.com/portfolio/p_0/view/v2");
                                     

@@ -1,0 +1,12 @@
+@model ScraperDb.Models.TickerInfo
+
+@{
+    ViewBag.SP = Model.SPValue;
+    ViewBag.Dow = Model.DowValue;
+    ViewBag.Nasdaq = Model.NasdaqValue;
+}
+
+        <ul class = "nav navbar-nav">
+                <li>S&P 500 @ViewBag.SP</li>
+
+       </ul>

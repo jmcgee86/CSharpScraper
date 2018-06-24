@@ -1,12 +1,19 @@
-﻿@{
+﻿@model ScraperDb.Models.TickerInfo
+@{
     ViewData["Title"] = "Home Page";
 }
 
 
 <div class="jumbotron">
+                <table class = "table table-dark">
+                    <tr>
+                        <td class = "ticker">S&P 500: @Html.DisplayFor(model => model.SPValue)</td>
+                        <td class = "ticker">Dow: @Html.DisplayFor(model => model.DowValue)</td>
+                        <td class = "ticker">Nasdaq: @Html.DisplayFor(model => model.NasdaqValue)</td>
+                    </tr>
+                </table>
 				<h2>Finance Scraper</h2>
                 <p>Take a snapshot of data from Yahoo Finance</p>
                 <p>Built using C#, EntityFramework and other .NET technologies</p>
                 <button type = "button" class = "btn btn-primary btn-lg"><a style = "color: white" asp-controller="Stocks" asp-action="Index">Get Started</a></button>
-
 </div>

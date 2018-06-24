@@ -17,10 +17,6 @@ using ScraperDb.Controllers;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 
-
-
-
-
 namespace ScraperDb
 {
     public class Program
@@ -35,13 +31,7 @@ namespace ScraperDb
                 .Build();
 
                 host.Run();
-		    
-        }
-
-
-
+		}
     }
-
-
 }
 

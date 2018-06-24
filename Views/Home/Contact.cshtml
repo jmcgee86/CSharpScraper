@@ -1,8 +1,14 @@
-﻿@{
+﻿@model ScraperDb.Models.TickerInfo
+
+@{
     ViewData["Title"] = "Contact";
 }
 <h2>@ViewData["Title"]</h2>
 <h3>@ViewData["Message"]</h3>
+
+<ul>
+    <li>@item.SPValue</li>
+</ul>
 
 <address>
     One Microsoft Way<br />
