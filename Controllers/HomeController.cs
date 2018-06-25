@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ScraperDb.Models;
 using System.Threading;
+using ScraperDb.DataRetrieval;
+
 
 namespace ScraperDb.Controllers
 {
@@ -13,16 +15,17 @@ namespace ScraperDb.Controllers
     {
         public IActionResult Index()
         {
-            var model = GetTicker.RetrieveTickerData();
+            var ticker = GetTicker.RetrieveTickerData();
+            var news = News.GetNews();
+            var model = new TickerAndNewsModels {NewsArticles = news, TickerInfo = ticker};
+
             return View(model);
         }
 
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
-            // TickerInfo tickerInfo = new TickerInfo();
-            var ticker = GetTicker.RetrieveTickerData();
-            return View(ticker);
+            return View();
         }
 
         public IActionResult Contact()

@@ -16,4 +16,25 @@ body{padding-top:50px;padding-bottom:20px}.body-content{padding-left:15px;paddin
 
 .jumbotron{
     box-shadow: 5px 5px 20px #d3d1dd;
+    margin-top: 10px;
+}
+
+.articleDiv{
+    /* background-color: #95a5a6; */
+    background-color: rgba(13, 12, 38, 0.1);
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 20px rgba(13, 12, 38, 0.2);
+
+}
+
+.articleDiv p{
+    color: white;
+}
+
+.articleDiv a{
+    color: #0084b4;
+    font-size: 1.2em;
 }

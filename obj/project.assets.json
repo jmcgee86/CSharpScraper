@@ -3102,6 +3102,18 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
+      "NewsAPI/0.5.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.3"
+        },
+        "compile": {
+          "lib/portable45-net45+win8+wpa81/NewsAPI.dll": {}
+        },
+        "runtime": {
+          "lib/portable45-net45+win8+wpa81/NewsAPI.dll": {}
+        }
+      },
       "Newtonsoft.Json/10.0.3": {
         "type": "package",
         "dependencies": {
@@ -8734,6 +8746,17 @@
         "netstandard.library.nuspec"
       ]
     },
+    "NewsAPI/0.5.0": {
+      "sha512": "e2SIFfVa3CayeFKdGl6XD7Bmtcmom7LPmYA6gfI+sUOQtZxdcrbCBcejWqGxmrWHcBCM/jDcC/F3YE0pZZRryQ==",
+      "type": "package",
+      "path": "newsapi/0.5.0",
+      "files": [
+        "lib/portable45-net45+win8+wpa81/NewsAPI.XML",
+        "lib/portable45-net45+win8+wpa81/NewsAPI.dll",
+        "newsapi.0.5.0.nupkg.sha512",
+        "newsapi.nuspec"
+      ]
+    },
     "Newtonsoft.Json/10.0.3": {
       "sha512": "hSXaFmh7hNCuEoC4XNY5DrRkLDzYHqPx/Ik23R4J86Z7PE/Y6YidhG602dFVdLBRSdG6xp9NabH3dXpcoxWvww==",
       "type": "package",
@@ -14304,6 +14327,7 @@
       "Microsoft.NETCore.App >= 2.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Tools >= 2.0.0",
+      "NewsAPI >= 0.5.0",
       "Selenium.Chrome.WebDriver >= 2.38.0",
       "Selenium.Firefox.WebDriver >= 0.21.0",
       "Selenium.Support >= 3.12.0",
@@ -14415,6 +14439,10 @@
             "target": "Package",
             "version": "[2.0.0, )"
           },
+          "NewsAPI": {
+            "target": "Package",
+            "version": "[0.5.0, )"
+          },
           "Selenium.Chrome.WebDriver": {
             "target": "Package",
             "version": "[2.38.0, )"
@@ -14443,5 +14471,17 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'NewsAPI 0.5.0' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.0'. This package may not be fully compatible with your project.",
+      "libraryId": "NewsAPI",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.0"
+      ]
+    }
+  ]
 }

@@ -1,4 +1,4 @@
-﻿@model ScraperDb.Models.TickerInfo
+﻿@model ScraperDb.Models.TickerAndNewsModels
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -7,13 +7,22 @@
 <div class="jumbotron">
                 <table class = "table table-dark">
                     <tr>
-                        <td class = "ticker">S&P 500: @Html.DisplayFor(model => model.SPValue)</td>
-                        <td class = "ticker">Dow: @Html.DisplayFor(model => model.DowValue)</td>
-                        <td class = "ticker">Nasdaq: @Html.DisplayFor(model => model.NasdaqValue)</td>
+                        <td class = "ticker">S&P 500: @Html.DisplayFor(model => model.TickerInfo.SPValue)</td>
+                        <td class = "ticker">Dow: @Html.DisplayFor(model => model.TickerInfo.DowValue)</td>
+                        <td class = "ticker">Nasdaq: @Html.DisplayFor(model => model.TickerInfo.NasdaqValue)</td>
                     </tr>
                 </table>
 				<h2>Finance Scraper</h2>
                 <p>Take a snapshot of data from Yahoo Finance</p>
                 <p>Built using C#, EntityFramework and other .NET technologies</p>
                 <button type = "button" class = "btn btn-primary btn-lg"><a style = "color: white" asp-controller="Stocks" asp-action="Index">Get Started</a></button>
+                <h3>Top Headlines: </h3>
+            @foreach (var item in Model.NewsArticles){
+                <div class = "articleDiv">
+                    <p><a target = "_blank" href = "@Html.DisplayFor(modelItem => item.Url)">@Html.DisplayFor(modelItem => item.Title)</a></p>
+                    <p>- @Html.DisplayFor(modelItem => item.Author), @Html.DisplayFor(modelItem => item.Source)</p>
+                    <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                    <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" height="50%" width = "50%">
+                </div>
+            }
 </div>
