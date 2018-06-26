@@ -20,9 +20,15 @@
             @foreach (var item in Model.NewsArticles){
                 <div class = "articleDiv">
                     <p><a target = "_blank" href = "@Html.DisplayFor(modelItem => item.Url)">@Html.DisplayFor(modelItem => item.Title)</a></p>
-                    <p>- @Html.DisplayFor(modelItem => item.Author), @Html.DisplayFor(modelItem => item.Source)</p>
-                    <p>@Html.DisplayFor(modelItem => item.Description)</p>
-                    <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" height="50%" width = "50%">
+                    <div class="row">
+                         <div class="col-md-8">
+                            <p>- @Html.DisplayFor(modelItem => item.Author), @Html.DisplayFor(modelItem => item.Source)</p>
+                            <p>@Html.DisplayFor(modelItem => item.Description)</p>                        
+                        </div>
+                        <div class="col-md-4">
+                            <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" height="100%" width = "100%">
+                        </div>
+                    </div>
                 </div>
             }
 </div>

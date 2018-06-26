@@ -29,9 +29,6 @@ namespace ScraperDb.DataRetrieval
             });
             if (articlesResponse.Status == Statuses.Ok)
             {
-                // total results found
-                Console.WriteLine("total: " + articlesResponse.TotalResults);
-                // here's the first 20
                 foreach (var article in articlesResponse.Articles)
                 {
                     articleList.Add(new NewsInfo()
